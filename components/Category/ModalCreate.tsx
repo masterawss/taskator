@@ -30,6 +30,7 @@ const ModalCreate = ({
     }
   });
 
+  const [id] = useState(uuid())
 
   const [show, setShow] = useState(false);
   const [date, setDate] = useState(new Date());
@@ -43,7 +44,7 @@ const ModalCreate = ({
     dispatch(addTaskToCategory({
       task: {
         ...data,
-        id: uuid(),
+        id,
         date
       },
       categoryId: category.id

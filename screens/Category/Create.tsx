@@ -2,16 +2,17 @@ import Header from '../../components/Header'
 import {Box, Button, Center, HStack, Image, Input, ScrollView, Text, VStack} from 'native-base'
 import { colors } from '../../utils/colors'
 import SelectColorItem from '../../components/Category/SelectColorItem'
-import { useMemo, useState } from 'react'
-import { useDispatch } from "react-redux";
+import { useMemo, useState, useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import uuid from "react-uuid";
 import { Controller } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
-import { storeCategory } from '../../store/category/categorySlice'
+import { CategoryState, storeCategory, updateCategory } from '../../store/category/categorySlice'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import SuccessfullyStoredSection from '../../components/Category/SuccessfullyStoredSection'
 import imgDocCheck from '../../assets/img/check-doc.png'
 import { getImagesByColor } from '../../utils/images'
+import { RootState } from '../../store'
 
 interface FormProps {
   title: string,
@@ -19,15 +20,26 @@ interface FormProps {
 }
 
 
-const Create = ({navigation}) => {
+const Create = ({navigation, route}) => {
+
+  const categoryId = route.params?.id
+  const category = useSelector((state:RootState) => state.category.list.find((category:CategoryState) => category.id === categoryId))
+  const [id, setId] = useState(uuid())
+  useEffect(() => {
+    if (categoryId) {
+      setValue('title', category?.title || '' )
+      setValue('description', category?.description || '' )
+      setColorSelected(category?.color || colors[0])
+    }
+  }, [])
+
   const dispatch = useDispatch()
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const { control, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {
       title: '',
       description: ''
     }
   });
-  const id = uuid()
   const [successfullyStored, setSuccessfullyStored] = useState(false)
 
   const [colorSelected, setColorSelected] = useState(colors[0])
@@ -37,12 +49,20 @@ const Create = ({navigation}) => {
   }
 
   const createCategory = (data:FormProps) => {
-    dispatch(storeCategory({
-      ...data,
-      id,
-      color: colorSelected,
-      tasks: []
-    }))
+    if(categoryId) {
+      dispatch(updateCategory({
+        ...data,
+        id: categoryId,
+        color: colorSelected,
+      }))
+    }else{
+      dispatch(storeCategory({
+        ...data,
+        id,
+        color: colorSelected,
+        tasks: []
+      }))
+    }
     setSuccessfullyStored(true)
   }
 
@@ -56,15 +76,19 @@ const Create = ({navigation}) => {
     <Box safeArea bg={colorSelected} minHeight="full">
       <Header
         mainActionPress={() => navigation.goBack()}
-        title="Create category"
+        title={`${categoryId ? 'Edit' : 'Create'} category`}
         color='white'
       />
       <ScrollView>
         <Box bg="white" p={4} mx={4} borderRadius={10} mt="80px">
           {
-            successfullyStored 
+            successfullyStored
             ? <SuccessfullyStoredSection
-                goToCategory={() => navigation.replace('category.show', {id})}
+                isEdit={!!categoryId}
+                goToCategory={() => {
+                  const idRoute = categoryId || id
+                  navigation.replace('category.show', {id: idRoute})
+                }}
                 goToHome={() => navigation.replace('home')}
               />
             : (
@@ -135,7 +159,7 @@ const Create = ({navigation}) => {
                 />
 
                 <Button onPress={handleSubmit(createCategory)}>
-                  Create category
+                  {`${categoryId ? 'Edit' : 'Create'} category`}
                 </Button>
               </>
             )

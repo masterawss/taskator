@@ -22,9 +22,6 @@ const Show = ({navigation, route}) => {
   
   const category = useSelector((state: RootState) => state.category.list.find((item: any) => item.id === id)) as CategoryState
 
-  const tasks = useMemo(() => {
-    return category.tasks
-  }, [category.tasks])
 
   const destroy = () => {
     dispatch(destroyCategory({id: category.id}))
@@ -37,17 +34,23 @@ const Show = ({navigation, route}) => {
   return <>
     <Box safeArea>
       <Header
+        color="#7d7d7d"
         mainActionPress={() => navigation.goBack()}
         title={category.title}
-        actions={<Button variant="ghost" onPress={destroy}>
-          <Ionicons name="trash" size={20} />
-        </Button>}
+        actions={<HStack space={4}>
+          <Button variant="ghost" onPress={() => navigation.navigate('category.create', {id: category.id})}>
+            <Ionicons name="pencil" color="#7d7d7d" size={20} />
+          </Button>
+          <Button variant="ghost" onPress={destroy}>
+            <Ionicons name="trash" color="#7d7d7d" size={20} />
+          </Button>
+        </HStack>}
       />
       <Box mx={4}>
         <Item navigation={navigation} category={category} />
       </Box>
 
-      <TasksSection tasks={tasks} category={category} />
+      <TasksSection category={category} />
 
     </Box>
     <Fab renderInPortal={false} shadow={2} placement="bottom-right" size="sm" bgColor={category.color}

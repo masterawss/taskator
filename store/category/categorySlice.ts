@@ -37,8 +37,13 @@ export const counterSlice = createSlice({
     refreshCategories: (state, action) => {
       state.list = []
     },
-    updateCategory: (state) => {
-
+    updateCategory: (state, action) => {
+      const category = state.list.find(category => category.id === action.payload.id)
+      if (category) {
+        category.title = action.payload.title
+        category.description = action.payload.description
+        category.color = action.payload.color
+      }
     },
     addTaskToCategory: (state, action) => {
       const category = state.list.find(category => category.id === action.payload.categoryId)

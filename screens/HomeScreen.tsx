@@ -17,6 +17,7 @@ const Home = ({navigation}) => {
   return <>
     <Box safeArea bg="red">
       <Header
+        color="#a6a6a6"
         mainActionPress={() => {}}
         mainIcon={<Image borderRadius={100} source={imgUser} alt="User" width={30} height={30} />}
         title="Hi, random user !"
@@ -29,7 +30,7 @@ const Home = ({navigation}) => {
             navigation={navigation} 
             categories={categories} 
           />
-          <TasksSection/>
+          <TasksSection navigation={navigation}/>
         </ScrollView>
       }
         
