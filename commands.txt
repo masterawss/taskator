@@ -1,0 +1,6 @@
+$env:NODE_OPTIONS = "--openssl-legacy-provider"
+npx expo start
+
+
+EXPORT APK
+eas build --profile production --platform android
