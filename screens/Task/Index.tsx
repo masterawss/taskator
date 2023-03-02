@@ -48,7 +48,7 @@ const Index = ({navigation}) => {
       />
       
       <Input mx={4} mb={4} mt={2}
-        shadow={1}
+        shadow={2}
         placeholder="Search"
         variant="filled"
         value={search}
