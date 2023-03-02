@@ -1,5 +1,7 @@
 # Taskator
-Una personal task management app donde podrás crear tus proyectos y gestionar tareas dentro de estos, esta app está basada en react native.
+Una personal task management app donde podrás crear tus proyectos y gestionar tareas dentro de estos, esta app está basada en react native. 
+
+Desarrollado por Anthony Will Solsol Soplin 💻.
 
 # Instalación
 El proyecto requiero Expo, por lo que será necesario instalar expo-cli
