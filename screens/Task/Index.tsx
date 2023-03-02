@@ -27,9 +27,11 @@ const Index = ({navigation}) => {
 
   useEffect(() => {
     if(search.length > 0) {
-      const tasks = tasks_grouped.map(cat => {
-        cat.tasks = cat.tasks.filter(task => task.title.toLowerCase().includes(search.toLowerCase()))
-        return cat
+      let tasks_to_filter = [...tasks_grouped]
+      const tasks = tasks_to_filter.map(cat => {
+        let tasks = [...cat.tasks]
+        tasks = tasks.filter(task => task.title.toLowerCase().includes(search.toLowerCase()))
+        return {...cat, tasks}
       })
       setTasksFiltered(tasks)
     } else {
@@ -80,7 +82,7 @@ const Index = ({navigation}) => {
       </HStack>
       <ScrollView mx={4}>
         <Box mt={4}>
-          { tasks_grouped.map((cat, index) => 
+          { tasksFiltered.map((cat, index) => 
               cat.tasks.length > 0 && cat.tasks.map((task, index) => <>
               <Pressable onPress={() => navigation.navigate('category.show', {id: cat.id})}>
                 <Box bg="white" borderRadius={10} mb={3} p={3}>

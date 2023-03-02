@@ -46,8 +46,8 @@ const TasksSection = ({navigation}) => {
           </Center>
           : <>
             { 
-              ongoingTasks.length && ongoingTasks.map((cat, index) => 
-                cat.tasks.length && cat.tasks.map((task, i) => 
+              ongoingTasks.length > 0 && ongoingTasks.map((cat, index) => 
+                cat.tasks.length > 0 && cat.tasks.map((task, i) => 
                   <Pressable key={task.id} onPress={() => navigation.navigate('category.show', {id: cat.id})}>
                     <HStack alignItems="center" mb={5}>
                       <Ionicons name={task.completed ? 'ellipse' : 'ellipse-outline'} size={24} color={cat.color} />
