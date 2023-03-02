@@ -1,4 +1,8 @@
 # Instalación
+El proyecto requiero Expo, por lo que será necesario instalar expo-cli
+```sh
+npm install -g expo-cli
+```
 Instale todas las dependencias
 ```sh
 npm install
