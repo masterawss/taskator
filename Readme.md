@@ -1,7 +1,4 @@
-# Instalacion
-
-La app está basada en Expo, por lo que requerirás instalarlo globalmente
-
+# Instalación
 Instale todas las dependencias
 ```sh
 npm install
@@ -24,7 +21,7 @@ $env:NODE_OPTIONS = "--openssl-legacy-provider"
 Listo, ahora solo falta probarlo en un dispositivo movil o emulador.
 
 #### Para uso en emuladores
-Necesitas tener un emulador en listo con ADB y expo ejecutandose correctamente en consola, presiona la tecla "A".
+Necesitas tener un emulador configurado con ADB y expo ejecutandose correctamente en consola, presiona la tecla "A" desde consola.
 Expo se encargará de abrir el simulador e instalar la app de ser necesario.
 #### Para uso en smartphone
 Necesitas tener un smartphone (Android o iphone) conectado a la misma red Wifi y expo ejecutandose correctamente en consola.
@@ -37,7 +34,7 @@ Abra la cámara y escanee el codigo QR que aparece en consola de la pc.
 
 > Nota: Si en algún momento se pierde la conexión de expo, presione la tecla "R" en la consola de expo de la pc, esto obligará a la app a actualizarse
 
-## _Es todo, espero que te guste la UI, está hecho con ❤️_
+## _Es todo, espero que te guste la App_
 
 # Principales características
 
