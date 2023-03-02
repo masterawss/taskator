@@ -15,8 +15,6 @@ const Index = ({navigation}) => {
   const [tasksFiltered, setTasksFiltered] = useState<CategoryState[]>([])
 
   const tasks_grouped = useMemo(() => {
-    console.log('CATEGORIES', categories);
-
     switch (tab) {
       case 'ongoing':
         return getOngoingTasksByCategories(categories)
