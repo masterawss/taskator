@@ -30,8 +30,10 @@ Expo se encargará de abrir el simulador e instalar la app de ser necesario.
 #### Para uso en smartphone
 Necesitas tener un smartphone (Android o iphone) conectado a la misma red Wifi y expo ejecutandose correctamente en consola.
 ##### Para android:
-Instale la app de Expo dede play store:
+Instale la app de Expo desde play store:
+
 https://play.google.com/store/apps/details?id=host.exp.exponent&hl=es&gl=US
+
 Abra la aplicación y escanee el codigo QR que aparece en consola de la pc.
 ##### Para iphone:
 Abra la cámara y escanee el codigo QR que aparece en consola de la pc.
