@@ -76,7 +76,7 @@ const Create = ({navigation, route}) => {
     <Box safeArea bg={colorSelected} minHeight="full">
       <Header
         mainActionPress={() => navigation.goBack()}
-        title={`${categoryId ? 'Edit' : 'Create'} category`}
+        title={`${categoryId ? 'Edit' : 'Create'} project`}
         color='white'
       />
       <ScrollView>
@@ -159,7 +159,7 @@ const Create = ({navigation, route}) => {
                 />
 
                 <Button onPress={handleSubmit(createCategory)}>
-                  {`${categoryId ? 'Edit' : 'Create'} category`}
+                  {`${categoryId ? 'Edit' : 'Create'} project`}
                 </Button>
               </>
             )
