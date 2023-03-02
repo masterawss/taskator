@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { addTaskToCategory, CategoryState } from "../../store/category/categorySlice";
 import {useState} from 'react'
 import uuid from "react-uuid";
-import DateTimePicker from '@react-native-community/datetimepicker';
 
 interface FormProps {
   title: string|null
@@ -32,20 +31,11 @@ const ModalCreate = ({
 
   const [id] = useState(uuid())
 
-  const [show, setShow] = useState(false);
-  const [date, setDate] = useState(new Date());
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setShow(false);
-    setDate(currentDate);
-  };
-
   const createTask = (data: FormProps) => {
     dispatch(addTaskToCategory({
       task: {
         ...data,
-        id,
-        date
+        id
       },
       categoryId: category.id
     }))
@@ -82,14 +72,6 @@ const ModalCreate = ({
         </Box>
       )}
     />
-    <Box width="100%">
-      <DateTimePicker
-        value={date}
-        mode="date"
-        onChange={onChange}
-      />
-
-    </Box>
     <HStack justifyContent="space-between" mt={4}>
       <Button variant="ghost" colorScheme="blueGray" onPress={() => {
         toogleModal(false);

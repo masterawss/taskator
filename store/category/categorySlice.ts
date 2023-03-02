@@ -5,7 +5,7 @@ export interface TaskState {
   id: string,
   title: string,
   completed: boolean,
-  date: string,
+  // date: string,
 }
 
 export interface CategoryState {

@@ -17,12 +17,7 @@ const TasksSection = ({
 }: TasksSectionProps) => {
 
   const dispatch = useDispatch()
-
-  const tasks_ordered = useMemo(() => {
-    // Order by task.date
-    return getTaskOrderedByDate(category.tasks)
-  }, [category.tasks])
-
+  
   const toogleTask = (isChecked: boolean, id: string) => {
     console.log(isChecked, id);
 
@@ -60,15 +55,15 @@ const TasksSection = ({
         </Box>
       </HStack>
       {
-        tasks_ordered.length > 0 
-        ? tasks_ordered.map((task) => (<>
+        category.tasks.length > 0 
+        ? category.tasks.map((task) => (
             <HStack justifyContent="space-between" key={task.id} mb={5}>
               <BouncyCheckbox
                 size={25}
                 isChecked={task.completed}
                 fillColor={category.color}
                 unfillColor="#FFFFFF"
-                text={task.title+"\n"+fomartForHumans(task.date)}
+                text={task.title}
                 iconStyle={{ borderColor: "red" }}
                 innerIconStyle={{ borderWidth: 2 }}
                 onPress={(isChecked: boolean) => {toogleTask(isChecked, task.id)}}
@@ -77,7 +72,7 @@ const TasksSection = ({
                 <Ionicons name="trash" size={19} color="#7d7d7d" />
               </Button>
             </HStack>
-          </>))
+          ))
         : <>
           <Center>
             <Image

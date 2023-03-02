@@ -15,7 +15,7 @@ const CategoriesSection = ({navigation, categories}: CategoriesSectionProps) => 
     </Box>
     <ScrollView horizontal={true} pb={2}>
       <HStack pl={4}>
-        {categories.map((category) => (
+        {categories.map((category, i) => (
           <Box key={category.id} mr={2} width="250px">
             <Item navigation={navigation} category={category} />
           </Box>

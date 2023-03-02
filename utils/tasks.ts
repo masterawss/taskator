@@ -52,10 +52,8 @@ export const getOngoingTasksByCategories = (categories: CategoryState[]) => {
 export const getCompletedTasksByCategories = (categories: CategoryState[]) => {
   const ongoingTasks = categories.map((category) => {
     const tasks = category.tasks.filter((task) => {
-      console.log('Completed TASK', task.date);
       return task.completed
     });
-    console.log('Completed', tasks);
     return { ...category, tasks };
   });
   return ongoingTasks;

@@ -105,7 +105,7 @@ const Create = ({navigation, route}) => {
                 <HStack mb={3} justifyContent="space-between">
                   {
                     colors && colors.map((color, index) => (
-                      <SelectColorItem key={index} color={color} selected={colorSelected === color} onPress={setColor} />
+                      <SelectColorItem key={color} color={color} selected={colorSelected === color} onPress={setColor} />
                     ))
                   }
                 </HStack>
