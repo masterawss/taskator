@@ -42,11 +42,11 @@ Abra la cámara y escanee el codigo QR que aparece en consola de la pc.
 
 # Principales características
 
-| Plugin | URL |
-| ------ | ------ |
-| Async storage | [plugins/dropbox/README.md][PlDb] |
-| Redux toolkit | [plugins/github/README.md][PlGh] |
-| Expo | [plugins/googledrive/README.md][PlGd] |
-| Native base | [plugins/onedrive/README.md][PlOd] |
-| React hook form | [plugins/medium/README.md][PlMe] |
-| Redux persist | [plugins/googleanalytics/README.md][PlGa] |
+| Plugin |
+| ------ |
+| Async storage |
+| Redux toolkit |
+| Expo |
+| Native base |
+| React hook form |
+| Redux persist |
